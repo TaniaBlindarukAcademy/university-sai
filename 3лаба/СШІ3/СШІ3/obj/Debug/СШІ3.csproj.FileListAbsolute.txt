@@ -1,0 +1,6 @@
+D:\Навчання\4 курс\СШІ3\СШІ3\bin\Debug\СШІ3.exe.config
+D:\Навчання\4 курс\СШІ3\СШІ3\obj\Debug\СШІ3.csprojResolveAssemblyReference.cache
+D:\Навчання\4 курс\СШІ3\СШІ3\bin\Debug\СШІ3.exe
+D:\Навчання\4 курс\СШІ3\СШІ3\bin\Debug\СШІ3.pdb
+D:\Навчання\4 курс\СШІ3\СШІ3\obj\Debug\СШІ3.exe
+D:\Навчання\4 курс\СШІ3\СШІ3\obj\Debug\СШІ3.pdb

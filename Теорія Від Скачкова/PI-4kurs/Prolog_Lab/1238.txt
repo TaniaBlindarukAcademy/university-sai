@@ -1,0 +1,187 @@
+
+DOMAINS
+
+name=symbol
+
+num=integer
+
+ 
+
+DATABASE
+
+ds(num)
+
+ 
+
+PREDICATES
+
+town(num,name,num)
+
+rw(num,name,name,num)
+
+proc(num)
+
+make_win
+
+menu
+
+repeat
+
+count(num,num)
+
+dist(name,name,num)
+
+dcount
+
+ 
+
+GOAL
+
+ make_win, menu.
+
+ 
+
+CLAUSES
+
+town(1,"Donetsk",1250).
+
+town(2,"Moskva",8000).
+
+town(3,"Kiev",5500).
+
+town(4,"Harkov",1300).
+
+town(5,"еее",10).
+
+  rw(1,"Donetsk","Harkov",400).
+
+  rw(2,"Harkov","Moskva",650).
+
+  rw(3,"Donetsk","Kiev",600).
+
+  rw(4,"Kiev","Moskva",700).
+
+ 
+
+repeat.
+
+repeat:-repeat.
+
+ 
+
+make_win:- makewindow(1,7,7,"MENU",0,0,25,80), clearwindow,
+
+           makewindow(2,3,5,"PROC_1",10,10,14,60), clearwindow,
+
+           makewindow(3,6,6,"PROC_2",10,10,14,60), clearwindow,
+
+           makewindow(4,4,4,"PROC_3",10,10,14,60),clearwindow,
+
+           makewindow(5,5,5,"PROC_4",10,10,14,60),clearwindow.
+
+ 
+
+ menu:- repeat, shiftwindow(1), nl,nl, write("1 - process 1"),nl,
+
+        write("2 - process 2"),nl, write("3 - process 3"),nl,
+
+        write("4 - process 4"),nl, write("5 - EXIT"),nl,nl,
+
+        write("Enter your choice   "),
+
+        readint(C), clearwindow, proc(C), C=5,
+
+        removewindow(1,1) , removewindow(2,1),  removewindow(3,1),
+
+        removewindow(4,1), removewindow(5,1) .
+
+ 
+
+ proc(1):- shiftwindow(2), nl, write("Spisok gorodov"),
+
+        nl,nl, town(_,X,Y), write(X,"  ",Y),
+
+         nl, fail.
+
+ proc(1):- nl, write("Press any key"), readchar(_),
+
+       clearwindow.
+
+ 
+
+ proc(2):- shiftwindow(3), nl, write("Spisok gorodov s naseleniem bolshe zadanogo"),
+
+        nl,nl, write("Input population    "),
+
+        readint(P),nl,
+
+        town(_,X,Y), Y>P, write(X,"  ",Y), nl, fail.
+
+ proc(2):- nl, write("Press any key"), readchar(_),
+
+       clearwindow.
+
+ 
+
+ proc(3):- shiftwindow(4), nl,
+
+        write("Distance between 2 towns"),nl,
+
+        write("Input town A "),readln(A),nl,
+
+        write("Input town B "), readln(B),
+
+         dist(A,B,T),nl,
+
+         write("Dist. B/W 2 Cities - ",A," and ",B," is ",T),nl,
+
+         write("Press any key"), readchar(_),
+
+           clearwindow.
+
+ 
+
+ proc(5):- nl,nl,nl, write(" Bye!    Press any key"),
+
+          readchar(_).
+
+ 
+
+ proc(4):- shiftwindow(5), nl, asserta(ds(0)),
+
+           dcount, ds(X),
+
+           write("Population in all towns is ",X),nl,nl,
+
+           write("Press any key"), readchar(_),
+
+           retractall(ds(_)),   clearwindow.
+
+ 
+
+ count(N,Sum):- town(N,_,Y), SumNew=Sum+Y, Nnew=N+1,
+
+            count(Nnew,SumNew),!.
+
+ count(N,Sum):-nl,nl, N1=N-1,
+
+         write("Sum. Popul. in ", N1, " towns  is ", Sum),
+
+         nl.
+
+ 
+
+ dcount:- town(_,_,Y), ds(X), Z=X+Y, retractall(ds(_)),
+
+          asserta(ds(Z)), fail.
+
+ dcount.
+
+ 
+
+ dist(A,B,T):- rw(_,A,B,T),!.
+
+ dist(A,B,T):- rw(_,B,A,T),!.
+
+ dist(A,B,T):- rw(_,A,C,T1), dist(C,B,T2), T=T1+T2,!.
+

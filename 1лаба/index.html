@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Матриця оцінок експертів
+</h1>
+<table class="matrix">
+
+</table>
+<h1>
+   ВАжливості об’єктів
+</h1>
+<table class="arrayK">
+
+</table>
+<div class="iteration"></div>
+<script>
+    var matrix = [
+        [
+            [1/6,1,1],
+            [0,1/2,0],
+            [0,1,1/2]
+        ],
+        [
+            [1/2,1/2,1/2],
+            [1/2,1/2,1/2],
+            [1/2,1/2,1/2]
+        ],
+        [
+                [1/2,1,1/2],
+                [0,1/2,0],
+                [1/2,1,1/2]
+        ]
+    ];
+
+    var m = 3;
+    var n = 3;
+    var E = 0.001;
+
+    var arrayK = [1,1,1];
+    function getFinalMatrix(matrix,m,n){
+        var newMatrix = new Array(n);
+        for(var i =0; i< n; ++i){
+            for(var j=0; j< n;++j){
+                var vectorKof = []
+                for(var mi =0; mi<m;++mi){
+                    if(!vectorKof[matrix[mi][i][j]]){
+                        vectorKof[matrix[mi][i][j]] = 0;
+                    }
+                    vectorKof[matrix[mi][i][j]]++;
+                }
+                if(!newMatrix[i]){
+                    newMatrix[i] = new Array(n);
+                }
+                var suma = 0;
+                var iterationo =0;
+                for(var iii in vectorKof){
+                    iterationo+=vectorKof[iii];
+                    suma+=iii*vectorKof[iii];
+                }
+                suma/=iterationo;
+                newMatrix[i][j] = suma;
+            }
+        }
+        return newMatrix;
+    }
+    function getYMatrix(matrix,arrayK,n){
+        var newKMatrix = new Array(n);
+        var sumK = 0;
+        for(var i=0; i<n; ++i){
+            var sum = 0;
+            for(var j =0; j< n; ++j){
+                sum += matrix[i][j] * arrayK[j];
+            }
+            newKMatrix[i]= sum;
+            sumK+=sum;
+        }
+        for(var i =0; i<n; ++i){
+            newKMatrix[i] = newKMatrix[i]/sumK;
+        }
+        return newKMatrix;
+    }
+
+
+    var iteration =0;
+    do{
+        iteration++;
+        var newK = getYMatrix(getFinalMatrix(matrix, m,n),arrayK,n);
+        var max = 0;
+        for(var i =0; i<n; ++i){
+            if(max<Math.abs(newK[i] - arrayK[i])){
+                max = Math.abs(newK[i] - arrayK[i]);
+            }
+        }
+        arrayK = newK;
+
+    }while(E<max);
+
+
+    var html = '';
+    for(var i=0; i<n; ++i){
+        html +='<tr>';
+        for(var j=0; j< n; ++j){
+            html +='<td>' + getFinalMatrix(matrix, m,n)[i][j] + '</td>';
+        };
+        html +='</tr>';
+    }
+
+    var htmlK = '';
+    for(var i =0 ; i<arrayK.length; ++i){
+        htmlK+='<tr>';
+        htmlK+='<td> Важливість об’єкту '+ (i+1) + '</td>';
+        htmlK+='<td>' + arrayK[i] + '</td>';
+        htmlK+='</tr>';
+    }
+
+    document.getElementsByClassName('matrix')[0].innerHTML = html;
+    document.getElementsByClassName('arrayK')[0].innerHTML =htmlK;
+    document.getElementsByClassName('iteration')[0].innerHTML = 'Кількість ітерацій = '+iteration;
+
+</script>
+</body>
+</html>

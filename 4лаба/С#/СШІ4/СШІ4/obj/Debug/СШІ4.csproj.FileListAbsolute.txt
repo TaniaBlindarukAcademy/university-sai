@@ -1,0 +1,6 @@
+D:\Навчання\4 курс\СШІ4\СШІ4\bin\Debug\СШІ4.exe.config
+D:\Навчання\4 курс\СШІ4\СШІ4\bin\Debug\СШІ4.exe
+D:\Навчання\4 курс\СШІ4\СШІ4\bin\Debug\СШІ4.pdb
+D:\Навчання\4 курс\СШІ4\СШІ4\obj\Debug\СШІ4.csprojResolveAssemblyReference.cache
+D:\Навчання\4 курс\СШІ4\СШІ4\obj\Debug\СШІ4.exe
+D:\Навчання\4 курс\СШІ4\СШІ4\obj\Debug\СШІ4.pdb

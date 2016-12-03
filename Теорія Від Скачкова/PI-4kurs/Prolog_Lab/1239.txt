@@ -1,0 +1,75 @@
+
+   domains
+
+     name = string
+
+     points = real
+
+     list = points *
+
+ 
+
+   predicates
+
+     football(name,points)
+
+     sum_list(list,points,integer).
+
+     report_average_football_score
+
+ 
+
+   goal
+
+     report_average_football_score.
+
+ 
+
+   clauses
+
+     /* факты (футбольная база данных) */
+
+ 
+
+       football("Ohio State",116.0).
+
+       football("Michigan",121.0).
+
+       football("Michigan State",114.0).
+
+       football("Purdue",99.0).
+
+       football("UCLA",122.0).
+
+ 
+
+     report_average_football_score :-
+
+       findall(Points,football(_,Points),Point_list),
+
+       sum_list(Point_list,Sum,Number),
+
+       Average = Sum / Number,
+
+       write("College Football Power Rating:"),
+
+       nl,
+
+       write("     Average Points = ",Average).
+
+ 
+
+       sum_list([],0,0).
+
+       sum_list([H|T], Sum, Number) :-
+
+          sum_list(T,Sum1,Number1),
+
+          Sum = H + Sum1,
+
+          Number = Number1 + 1.
+
+ 
+
+ 
+

@@ -1,0 +1,6 @@
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\bin\Debug\sshi_lab_2.exe.config
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\bin\Debug\sshi_lab_2.exe
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\bin\Debug\sshi_lab_2.pdb
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\obj\Debug\sshi_lab_2.csprojResolveAssemblyReference.cache
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\obj\Debug\sshi_lab_2.exe
+c:\users\odmin\documents\visual studio 2015\Projects\sshi_lab_2\sshi_lab_2\obj\Debug\sshi_lab_2.pdb

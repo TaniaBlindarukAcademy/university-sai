@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+    function N(inputNeurons){
+        var self = this;
+        self.inputS = [];
+        self.outputS = [];
+
+        self.bias =0;
+        self.biasd = 0;
+        self.grad = 0;
+        self.y = 0;
+
+        if(!inputNeurons){
+
+        }
+
+    }
+
+</script>
+<script>
+    function NN(inputSize,hiddenSize,outputSize){
+        var self = this;
+        self.learnRate = 0.9;
+        self.momentum = 0.04;
+        self.inputLayer = [];
+        self.outputLayer = [];
+        self.hiddenLayer = [];
+
+        for(var i =0; i<inputSize; ++i){
+            self.inputLayer.push(new N());
+        }
+        for(var i =0; i<hiddenSize; ++i){
+            self.hiddenLayer.push(new N(inputLayer));
+        }
+        for(var i =0; i<outputSize; ++i){
+            self.outputLayer.push(new N(hiddenLayer));
+        }
+
+        self.trainNN = function(inputs){
+            for(var i =0; i<self.inputLayer.length; ++i){
+                self.inputLayer[i].x = inputs[i++];
+            }
+            for(var i =0; i<self.hiddenLayer.length; ++i){
+                self.hiddenLayer[i].getY();
+            }
+            for(var i =0; i<self.outputLayer.length; ++i){
+                self.outputLayer[i].getY();
+            }
+        }
+
+        self.compute = function(inputs){
+            self.trainNN(inputs);
+            var res = [];
+            for(var i =0; i<self.outputLayer.length; ++i){
+                res.push(self.outputLayer[i].x);
+            }
+            return res;
+        }
+
+        self.calculateError = function(targets){
+            var index= 0;
+            for(var i = 0; i<self.outputLayer.length; ++i){
+
+            }
+
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+cond(1,"kormit detenyshej molokom").
+cond(2,"imeet per'ja").
+cond(3,"plavaet").
+cond(4,"est myaso").
+cond(5,"imeet kopyta").
+cond(6,"letaet").
+cond(7,"otkladyvaet jajtsa").
+cond(8,"imeet sherst'").
+cond(9,"imeet polosy").
+cond(10,"imeet pyatna").
+cond(11,"imeet cherno-beluju okrasku").
+cond(12,"imeet dlinnuju sheju").
+cond(13,"imeet dlinnye nogi").
+cond(14,"imeet schupal'tsa").
+rule("gepard",[1,4,8,10]).
+rule("tigr",[1,4,8,9]).
+rule("zhyraf",[1,5,8,10,12,13]).
+rule("zebra",[1,5,8,9,11]).
+rule("straus",[2,14]).
+rule("pingvin",[2,3,11]).
+rule("orel",[2,6]).
+rule("kit",[1,3,11]).
+rule("os'minog",[3,14]).

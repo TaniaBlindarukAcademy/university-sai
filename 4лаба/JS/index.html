@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .row{
+
+        }
+        .cell{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        .cell.active{
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="draw">
+
+</div>
+<div class="epoha"></div>
+<button class="submit">Подивитися результат</button>
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+    function draw(){
+        var col = 3;
+        var row = 5;
+        for(var i =0; i<row; ++i){
+            var $rowElement = $('<div class="row">');
+            for(var j =0 ; j<col; ++j){
+                var $cellElement = $('<div class="cell">');
+                $rowElement.append($cellElement);
+                $cellElement.on('click',function(e){
+                    var $self = $(this);
+                    if($self.hasClass('active')){
+                        $self.removeClass('active');
+                    }else {
+                        $self.addClass('active');
+                    }
+                });
+            }
+            $rowElement.appendTo($('#draw'));
+        }
+    }
+
+    function Neuron(neuronData, bl) {
+        var self = this;
+        self.neuronData = neuronData;
+        self.w = [];
+        self.y = bl;
+        self.isOdd = 0;
+        for (var i = 0; i < neuronData.length; ++i) {
+            self.w[i] = Math.random();
+        }
+    }
+
+
+    function Main() {
+
+    }
+
+    Main.prototype.train = function () {
+        var numbers = [
+            "111001111100111",
+            "001011101001001",
+            "111001111100111",
+            "111001111001111",
+            "101101111001001",
+            "111100111001111",
+            "111100111101111",
+            "111001001010100",
+            "111101111101111",
+            "111101111001111"];
+
+        var isParne = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
+
+        function numbersToArray(string) {
+            var res = [];
+            for (var i = 0; i < string.length; ++i) {
+                res[i] = string[i];
+            }
+            return res;
+        }
+
+        var mainNeuron = new Neuron(numbersToArray(numbers[0]), 0);
+        var isOdd = 0;
+        var neurons = [];
+        for (var i = 0; i < numbers.length; ++i) {
+            isOdd = isParne[i];
+            var n = new Neuron(numbersToArray(numbers[i]), isParne[i]);
+            neurons.push(n);
+        }
+
+        var isEpoha = true;
+        var countEpoha = 0;
+        var y = -1;
+        var delta = 0;
+        var nu = 0.1;
+        var teta = 0.5;
+
+        do {
+            countEpoha++;
+            isEpoha = true;
+            for (var ni = 0; ni < neurons.length; ++ni) {
+                var n = neurons[ni];
+                do {
+                    var NET = 0;
+                    for (var i = 0; i < mainNeuron.w.length; ++i) {
+                        NET += mainNeuron.w[i] * n.neuronData[i];
+                    }
+                    if (NET < teta) {
+                        y = 0;
+                    } else {
+                        y = 1;
+                    }
+                    delta = n.y - y;
+                    if (delta != 0) {
+                        isEpoha = false;
+                        for (var i = 0; i < n.w.length; ++i) {
+                            mainNeuron.w[i] = mainNeuron.w[i] + (delta * nu * n.neuronData[i]);
+                        }
+                    }
+                } while (delta != 0);
+            }
+        } while (!isEpoha);
+
+        $('.submit').on('click',function(e){
+            var newMas = [];
+            for(var  i =0; i<$('.cell').length; ++i){
+                newMas[i] = + $($('.cell')[i]).hasClass('active');
+            }
+            var NET1 = 0;
+            for(var i =0; i<mainNeuron.w.length; ++i){
+                NET1+=mainNeuron.w[i] * newMas[i];
+            }
+            if(NET1 < teta){
+                y = 0;
+            }else{
+                y = 1;
+            }
+            alert(y === 0 ? 'Парна' : 'Непарна');
+
+        });
+
+        return countEpoha;
+
+    };
+
+
+    draw();
+    var main = new Main();
+    var epoha = main.train();
+    $('.epoha').text('Епох - ' + epoha);
+
+
+</script>
+</body>
+</html>

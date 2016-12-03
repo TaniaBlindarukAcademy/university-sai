@@ -1,0 +1,6 @@
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\bin\Debug\NN_lr5.exe.config
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\bin\Debug\NN_lr5.exe
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\bin\Debug\NN_lr5.pdb
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\obj\Debug\NN_lr5.csprojResolveAssemblyReference.cache
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\obj\Debug\NN_lr5.exe
+c:\users\dmitry pavlenko\documents\visual studio 2013\Projects\NN_lr5\NN_lr5\obj\Debug\NN_lr5.pdb

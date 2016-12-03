@@ -1,0 +1,156 @@
+КодDOMAINS
+listquest = integer*.
+
+DATABASE
+fact(integer,string).
+
+PREDICATES
+rule(integer, string, string, listquest).
+discover(listquest).
+recognition(string).
+complete(integer).
+ask(integer).
+
+CLAUSES
+rule(1,"rastenie","ovoch",[1]).
+rule(2,"rastenie","jagoda",[2]).
+rule(3,"rastenie","fruct",[3]).
+rule(4,"jagoda","nazemnaja",[4]).
+rule(5,"jagoda","kust",[5]).
+rule(6,"jagoda","derevo",[6]).
+rule(7,"nazemnaja","klubnika",[7,8]).
+rule(8,"nazemnaja","klukva",[8,9,10]).
+rule(9,"kust","smorodina",[11]).
+rule(10,"kust","kryzovnik",[12]).
+rule(11,"derevo","vishnya",[13]).
+rule(12,"derevo","oblepiha",[14]).
+rule(13,"fruct","jabloko",[7,15]).
+rule(14,"fruct","ranet",[9,16]).
+rule(15,"ovoch","korneplod",[17]).
+rule(16,"ovoch","pletusheesja_po_zemle",[18]).
+rule(17,"ovoch","struchkovoe",[19]).
+rule(18,"ovoch","kustistoe",[5,20]).
+rule(19,"ovoch","fitoncid",[21]).
+rule(20,"korneplod","morkov",[22]).
+rule(21,"korneplod","svekla",[23]).
+rule(22,"pletusheesja_po_zemle","tykva",[24]).
+rule(23,"pletusheesja_po_zemle","kabachok",[25,26]).
+rule(24,"struchkovoe","goroh",[27]).
+rule(25,"struchkovoe","boby",[28]).
+rule(26,"kustistoe","pomidor",[8,29]).
+rule(27,"kustistoe","perec",[30]).
+rule(28,"fitoncid","luk",[31,32]).
+rule(29,"fitoncid","chesnok",[33,34]).
+
+ask(X):-fact(X,"da"),!.
+ask(X):-fact(X,"net"),!,fail.
+
+ask(1):-write("ono ne rastet na dedrvjah?"),!,complete(1).
+ask(2):-write("ono imeet nevskryvauchiysja plod?"),!,complete(2).
+ask(3):-write("ono imeet vskryvaychiysja plod?"),!,complete(3).
+ask(4):-write("ono rastet okolo zemli?"),!,complete(4).
+ask(5):-write("ono rastet na kustah?"),!,complete(5).
+ask(6):-write("ono rastetna derevjah?"),!,complete(6).
+ask(7):-write("ono sladkoe?"),!,complete(7).
+ask(8):-write("ono krasnogo cveta?"),!,complete(8).
+ask(9):-write("ono kisloe"),!,complete(9).
+ask(10):-write("ono rastet na bolotah?"),!,complete(10).
+ask(11):-write("ono chernogo cveta?"),!,complete(11).
+ask(12):-write("ono zelenogo cveta?"),!,complete(12).
+ask(13):-write("ono imeet bolshuykostochku v seredine?"),!,complete(4).
+ask(14):-write("ono oranzhev_zheltotgo cveta?"),!,complete(14).
+ask(15):-write("ono bolshoe?"),!,complete(15).
+ask(16):-write("ono malenkoe?"),!,complete(16).
+ask(17):-write("sjedobnaja chast javljaetsja kornem rastenij?"),!,complete(17).
+ask(18):-write("stebel rastenija pletetsja po zemle?"),!,complete(18).
+ask(19):-write("sjedobnaja chast rastenija nahoditsja v struchke?"),!,complete(19).
+ask(20):-write("стебль растения не имеет твердую кору?"),!,complete(20).
+ask(21):-write("vydeljaet li ono lechebnoe gazoobraznoe veschestvo?"),!,complete(21).
+ask(22):-write("ono dlinnoe i orangevoe?"),!,complete(22).
+ask(23):-write("ono krugloe i bordovoe?"),!,complete(23).
+ask(24):-write("iz nego delajut na hellouin straschilku?"),!,complete(24).
+ask(25):-write("ono imeet prodolgovatuju formu?"),!,complete(25).
+ask(26):-write("iz nego delajut ikru?"),!,complete(26).
+ask(27):-write("plod vnutri struchka melkogo rasmera?"),!,complete(27).
+ask(28):-write("plod vnutri struchka krupnogo rasmera?"),!,complete(28).
+ask(29):-write("iz nego delajut ketchup?"),!,complete(29).
+ask(30):-write("iz nego delajut lecho?"),!,complete(30).
+ask(31):-write("ono sostoit iz odnoy golovki?"),!,complete(31).
+ask(32):-write("iz nego byl sdelan Chipollino?"),!,complete(32).
+ask(33):-write("ono sostoit iz dolek?"),!,complete(33).
+ask(34):-write("im zaschischajytsja ot vampirov?"),!,complete(34).
+
+recognition(X):-rule(N,X,Y,Z),discover(Z),!,
+   write("____",X," - ",Y," po pravilu  ",N),nl,
+   recognition(Y).
+recognition("rastenie"):-write("eto rastenie nam ne izvestno"),!.
+recognition(_).   
+
+discover([]).
+discover([X|Y]):-ask(X),discover(Y).
+
+complete(X):-nl,readln(Y),assert(fact(X,Y)),Y="да".
+
+НО в результате её выполнения выводится следующая ошибка:
+(указывая на предикат read) система говорит: Undeclared predicate or misspelling.
+
+Типа предикат не объявлен или написан не правильно, но ведь read это встроенный предикат, который объявлять не нужно, да и в написании его ошибиться трудновато  
+
+Помогите, кто знает в чем здесь загвоздка  очень очень нужно...
+
+Заранее спасибо... 
+     
+ 
+Винитарх  19.11.2006, 12:31 Сообщение #2  
+
+
+
+
+
+Группа: Пользователи
+Сообщений: 2 085
+Регистрация: 1.3.2003
+Из: Краснодар
+
+
+
+ Цитата
+но ведь read это встроенный предикат, который объявлять не нужно, да и в написании его ошибиться трудновато
+
+Нет такого предиката в Турбе. Читайте хэлп.
+ 
+     
+ 
+Aureta  20.11.2006, 13:26 Сообщение #3  
+
+
+
+
+
+Группа: Пользователи
+Сообщений: 7
+Регистрация: 19.11.2006
+
+
+
+ Насколько я понял тебе нужно записать
+readint(Y) - если считать нужно integer
+readln(Y) - если считать нужно строку
+и какие-то еще ... этих тебе, должно хватить 
+     
+ 
+simbalion   Сегодня, 11:23 Сообщение #4  
+
+
+
+
+
+Группа: Пользователи
+Сообщений: 2
+Регистрация: 17.11.2006
+
+
+
+  Действительно, достаточно было исправить на readln и... все заработало!
+
+ 
