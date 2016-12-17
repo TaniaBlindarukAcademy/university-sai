@@ -17,13 +17,6 @@ PREDICATES
 	nondeterm add_cond(li)
 	nondeterm print_cond(i,li,li)
 	nondeterm read_cond(c,li,li)
-	nondeterm ex_cond(i,li,li,i)
-	nondeterm wr_cond(c,i,li,li)
-	nondeterm new_cond(i,li,li)
-	nondeterm read_true_char(c)
-	nondeterm test(c,c)
-CLAUSES
-	start:-
 		consult("animals.ddb",knowledge),nl,    
 		write("Zagadajte zivotnoe, a ja popitajus' ego otgadat'"),nl,
 		animals,
