@@ -1,11 +1,11 @@
 domains
-    s=string
+             s=string
   database-ss
-             b(s,s)
+             b(s,s) 
 
     predicates
-
-            nondeterm  parent(s,s)
+              
+           nondeterm  parent(s,s)
             nondeterm man(s)
             nondeterm woman(s)
             nondeterm father(s,s)
@@ -19,35 +19,50 @@ domains
             nondeterm brother(s,s)
             nondeterm sister(s,s)
             nondeterm is_brother(s,s)
-            nondeterm dob(s,s)
+            nondeterm dob(s,s) 
             nondeterm menu
-            nondeterm m(integer)
+            nondeterm m(integer)   
 
-      clauses
+      clauses 
 
-             parent("Kolia","Ura").
-             parent("Kolia","Ala").
-             parent("Masha","Ala").
-             parent("Masha","Ala").
-             parent("Ura","Lesha").
-             parent("Ura","Lena").
-             parent("Ala","Ira").
-             parent("Tolik","Ira").
-             parent("Galia","Lena").
-             parent("Galia","Lesha").
+             parent("Ivan","Pet").
+             parent("Ivan","Nic").
+             parent("Ivan","Olga").
+             parent("Mary","Pet").
+             parent("Mary","Nic").
+             parent("Mary","Olga").
+            parent("Pet","Stepan").
+             parent("Pet","Nady").
+             parent("Nina","Stepan").
+             parent("Nina","Nady").
+             parent("Nic","Tany").
+             parent("Nic","Lena").
+            parent("Lucy","Tany").
+             parent("Lucy","Lena").
+             parent("Olga","Vasya").
+             parent("Olga","Serg").
+             parent("Olga","Kostya").
+             parent("Jon","Vasya").
+             parent("Jon","Serg").
+             parent("Jon","Kostya").
 
+             man("Ivan").
+             man("Pet").
+             man("Nic").
+             man("Jon").
+             man("Stepan").
+             man("Vasya").
+             man("Serg").
+             man("Kostya").
 
-             man("Lesha").
-             man("Tolik").
-             man("Kolia").
-             man("Ura").
-
-             woman("Masha").
-             woman("Ala").
-             woman("Galia").
+             woman("Mary").
+             woman("Nina").
+             woman("Lucy").
+             woman("Olga").
+             woman("Nady").
+             woman("Tany").
              woman("Lena").
-             woman("Ira").
-
+             
 
             father(X,Y):- parent(X,Y), man(X).
 
@@ -75,9 +90,9 @@ domains
 
              dob(X,Y):-b(X,Y),!;
 
-                       assert(b(X,Y)).
-
-
+                       assert(b(X,Y)).  
+             
+             
              menu:-   write("   1-Found father"),nl,
                       write("   2-Found mother"),nl,
                       write("   3-Found son"),nl,
@@ -88,24 +103,24 @@ domains
                       write("   8-Found g_mother"),nl,
                       write("   9-Found g_son"),nl,
                       write("   10-Found g_doughter"),nl,
-
+                      
                       readint(X),
-
+                      
                       m(X).
-
+                      
                          m(1):-write("   Input name the man"),nl,
                                readln(X),
-                               father(Y,X),
+                               father(X,Y),
                                write(" The "),
                                write(X),
                                write(" father ",Y), nl,
                                fail;
                                readln(_),
                                menu.
-
+                               
                          m(2):-write("   Input name the woman"),nl,
                                readln(X),
-                               mother(Y,X),
+                               mother(X,Y),
                                write(" The "),
                                write(X),
                                write(" mother ",Y), nl,
@@ -118,7 +133,7 @@ domains
                                write(" The "),
                                write(X),
                                write(" son ",Y), nl,
-                               fail;
+                               fail; 
                                readln(_),
                                menu.
                       m(4):-write("   Input name the man"),nl,
@@ -182,4 +197,7 @@ domains
                                write(X),
                                write(" g_doughter ",Y), nl,
                                fail;
-                               readln(_).
+                               readln(_),
+                               menu.
+     goal
+     menu.
