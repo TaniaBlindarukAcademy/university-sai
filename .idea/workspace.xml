@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee9b6134-7068-4c8b-b0af-04b9145e8928" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vip52/vip52pe.exe" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Vip52/readme.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/7/lab7.pro" afterPath="$PROJECT_DIR$/7/lab7.pro" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/8/2.pro" afterPath="$PROJECT_DIR$/8/2.pro" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/8/Lab8.pro" afterPath="$PROJECT_DIR$/8/Lab8.pro" />
@@ -239,7 +237,7 @@
       <workItem from="1481970435571" duration="3441000" />
       <workItem from="1481984687922" duration="809000" />
       <workItem from="1481992866053" duration="196000" />
-      <workItem from="1481997129407" duration="17000" />
+      <workItem from="1481997129407" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="added doc file to 7-9lr">
       <created>1481973441856</created>
@@ -255,11 +253,18 @@
       <option name="project" value="LOCAL" />
       <updated>1481992982613</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added visual prolog oO">
+      <created>1481997161444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1481997161444</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4463000" />
+    <option name="totallyTimeSpent" value="4785000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -295,7 +300,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="added doc file to 7-9lr" />
     <MESSAGE value="added prolog jJ" />
-    <option name="LAST_COMMIT_MESSAGE" value="added prolog jJ" />
+    <MESSAGE value="Added visual prolog oO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added visual prolog oO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
